@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>test application</title>
+  <link rel="stylesheet" type="text/css" href="http://openlayers.org/dev/theme/default/style.css">
+  <link rel="stylesheet" type="text/css" href="http://angular-ui.github.io/ng-grid/css/ng-grid.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/pace.css"/>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body ng-controller="mainCtrl">
+    <!-- resizer -->
+    <!-- http://embed.plnkr.co/Zi2f0EPxmtEUmdoFR63B/preview --> 
+
+    <div id="top-content">
+        <div class="sidepanel">
+          <select ng-model="state" ng-options="s.attributes.STATE_NAME for s in myStates" ng-change="stateSlct()">
+          </select>
+          <select ng-model="county" ng-options="c.attributes.NAME for c in myCounties" ng-change="cntySlct()">       
+          </select>
+          <hr>         
+          <div class="btn-group btn-group-xs">
+            <button type="button" class="btn btn-default">Instructions</button>
+            <button type="button" class="btn btn-default">FAQ</button>         
+            <button type="button" class="btn btn-default">Download Inventory</button>
+            <button type="button" class="btn btn-default">Metadata</button>
+          </div>
+          </br></br>
+          <div class="btn-group btn-group-xs">
+            <button type="button" class="btn btn-default">Map Service</button>
+            <button type="button" class="btn btn-default">More Information</button>         
+            <button type="button" class="btn btn-default">Contact Us</button>           
+          </div>
+          <hr>
+          <div>
+            <h5>Data Type</h5>
+            <ul>
+              <li><div class="swatch topolidar"></div><label>Topographic Lidar</label></li>
+              <li><div class="swatch toposhore"></div><label>Topography Shoreline Lidar</label></li>
+              <li><div class="swatch ifsar"></div><label>IfSAR Data</label></li>
+              <li><div class="swatch bathylidar"></div><label>Bathymetric Lidar</label></li>
+              <li><div class="swatch hydrographic"></div><label>NOAA Hydrographic Surveys</label></li>
+              <li><div class="swatch otherbathy"></div><label>Other Bathymetric Surveys</label></li>
+              <li><div class="swatch line usacedredge"></div><label>USACE Dredge Surveys</label></li>
+              <li><div class="swatch line trackline"></div><label>Trackline Bathymetry</label></li>
+              <li><div class="swatch line multibeam"></div><label>Multibeam Bathymetry</label></li>
+            </ul>
+          </div>
+
+        </div> 
+        <div  ng-class="{coverdiv: covermap == true}">      
+        </div>      
+        <div id='map_canvas' class='map'>      
+        </div>
+    </div> 
+
+    <div id="bottom-content">
+        <tabset>
+          <tab heading="Topographic">
+              <div class="gridStyle" ng-grid="topogridOptions"></div>
+          </tab>
+          <tab heading="Bathymetric" active="activeBathy">
+              <div class="gridStyle" ng-grid="bathygridOptions"></div>
+          </tab>
+        </tabset> 
+    </div> 
+
+    <div id="content-resizer" 
+         resizer="horizontal" 
+         resizer-height="6" 
+         resizer-top="#top-content" 
+         resizer-bottom="#bottom-content">
+    </div> 
+
+    
+       
+ 
+
+ 
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="http://angular-ui.github.io/ng-grid/lib/jquery-1.8.2.min.js"></script>
+  <script src="http://openlayers.org/dev/OpenLayers.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-route.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+  <script src="lib/ng-grid.js"></script>  
+  <script src="lib/pace.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+/* app css stylesheet */
+
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 100%; 
+    height: 1000px;
+}
+
+.map{
+    width: 700px;
+    height: 100%;
+    float: left;
+    z-index: 1;
+}
+.coverdiv{
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.sidepanel{
+    width: 300px;
+    height: 100%;
+    float: left;
+    background-color: #fff;
+}
+
+
+ul{
+   list-style: none;
+}
+li{
+    margin-bottom: 2px;
+}
+.swatch{
+   width: 22px;
+   height: 22px;
+   background-color: pink;
+   float: left;
+}
+
+.line{
+    margin-top: 8px;
+    height: 4px;   
+}
+
+label{
+    padding-left: 7px;
+    font-weight: 100;
+    color: #666;
+    font-size: 12px;
+
+}
+
+.topolidar{background-color: green}
+.toposhore{background-color: orange}
+.ifsar{background-color: pink}
+.bathylidar{background-color: yellow}
+.hydrographic{background-color: lightblue}
+.otherbathy{background-color: purple}
+.usacedredge{background-color: red}
+.trackline{background-color: blue}
+.multibeam{background-color: darkblue}
+
+ 
+
+
+/*Resizer css*/
+#topnav {
+    background-color: #333333;
+    display: block;
+    height: 35px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #DDD;
+}
+#sidebar {
+    background-color: #EEE;
+    position: absolute;
+    top: 35px;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    overflow: auto;
+}
+#content {
+    position: absolute;
+    top: 35px;
+    bottom: 0;
+    /*left: 206px /* 200 + 6*/
+    right: 0;
+    overflow: hidden;
+    color: #FFF;
+    
+}
+#top-content {
+    position: absolute;
+    top: 0;
+    bottom: 306px; /* 130 + 6 */
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    overflow: auto;
+}
+#bottom-content {
+    position: absolute;
+    height: 300px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    background-color: #fff;
+}
+#sidebar-resizer {
+    background-color: #666;
+    position: absolute;
+    top: 35px;
+    bottom: 0;
+    left: 200px;
+    width: 6px;
+    cursor: e-resize;
+}
+#content-resizer {
+    z-index: 2020;
+    position: absolute;
+    height: 6px;
+    bottom: 300px;
+    left: 0;
+    right: 0;
+    background-color: #666;
+    cursor: n-resize;
+}
+#sidebar-resizer:hover, #preview-resizer:hover {
+    background-color: #AAA;
+}
