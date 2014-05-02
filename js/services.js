@@ -43,6 +43,7 @@ angular.module('myApp.services', []).
     //http://victorblog.com/2012/12/20/make-angularjs-http-service-behave-like-jquery-ajax/
       var intersectTopoPost = {        
         async: function (datatopost){
+          console.log(datatopost)
           var promise = $http({
                           method: 'POST', 
                           url: 'http://maps.csc.noaa.gov/arcgis/rest/services/USInteragencyElevationInventory/USInteragencyElevInventory/MapServer/identify',

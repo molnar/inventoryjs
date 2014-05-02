@@ -67,6 +67,7 @@ angular.module('myApp.controllers', []).
 				cntyGeom=JSON.stringify(cntyGeom);				
 				var postData ={geometryType:"esriGeometryPolygon", geometry:cntyGeom, sr:102100, layers:"visible:3,4,5,6", tolerance:1, mapExtent:mapExtStrg, imageDisplay:"1200,600,96",returnGeometry:true,f:"json",callback:"JSON_CALLBACK"}
 				       	  
+				 console.log("dsf" + cntyGeom, postData)
 				//trigger county query again topoinv
 				intersectTopoPost.async(postData).then(function(d){					
 					$scope.populateGrid(d.data.results)
