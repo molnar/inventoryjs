@@ -29,7 +29,7 @@ angular.module('myApp.controllers', []).
       	   	return 0;
 	      });
 	      $scope.myStates = myStates;
-	      $scope.state = $scope.myStates[0];
+	      //$scope.state = $scope.myStates[0];
 	    });
 
 	    $scope.stateSlct = function(){
@@ -38,7 +38,7 @@ angular.module('myApp.controllers', []).
 	    	//get counties
 	    	getCounties.async(cntyWhereStmt, cntyGeoReturn).then(function(d){	    		
 	    		$scope.myCounties = d.data.features;
-	    		$scope.county = $scope.myCounties[0];
+	    		//$scope.county = $scope.myCounties[0];
 	    	});
 
 	    	//get state geometry

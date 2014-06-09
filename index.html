@@ -2,10 +2,10 @@
 <html lang="en" ng-app="myApp">
 <head>
   <meta charset="utf-8">
-  <title>test application</title>
+  <title>United States Interagency Elevation Inventory  </title>
   <link rel="stylesheet" type="text/css" href="http://openlayers.org/dev/theme/default/style.css">
   <link rel="stylesheet" type="text/css" href="http://angular-ui.github.io/ng-grid/css/ng-grid.css">
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/pace.css"/>
   <link rel="stylesheet" href="css/app.css"/>
 </head>
@@ -15,9 +15,11 @@
 
     <div id="top-content">
         <div class="sidepanel">
-          <select ng-model="state" ng-options="s.attributes.STATE_NAME for s in myStates" ng-change="stateSlct()">
-          </select>
-          <select ng-model="county" ng-options="c.attributes.NAME for c in myCounties" ng-change="cntySlct()">       
+          <select ng-model="state" ng-options="s.attributes.STATE_NAME for s in myStates" ng-change="stateSlct()" class="locationSlct">
+            <option value="">Select State/Territory</option>   
+          </select>         
+          <select ng-model="county" ng-options="c.attributes.NAME for c in myCounties" ng-change="cntySlct()" class="locationSlct">  
+            <option value="">Select County/Island</option>     
           </select>
           <hr>         
           <div class="btn-group btn-group-xs">

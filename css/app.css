@@ -137,3 +137,8 @@ label{
 #sidebar-resizer:hover, #preview-resizer:hover {
     background-color: #AAA;
 }
+
+
+.locationSlct{
+    width: 100%;
+}
