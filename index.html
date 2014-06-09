@@ -21,18 +21,21 @@
           <select ng-model="county" ng-options="c.attributes.NAME for c in myCounties" ng-change="cntySlct()" class="locationSlct">  
             <option value="">Select County/Island</option>     
           </select>
-          <hr>         
-          <div class="btn-group btn-group-xs">
-            <button type="button" class="btn btn-default">Instructions</button>
-            <button type="button" class="btn btn-default">FAQ</button>         
-            <button type="button" class="btn btn-default">Download Inventory</button>
-            <button type="button" class="btn btn-default">Metadata</button>
-          </div>
-          </br></br>
-          <div class="btn-group btn-group-xs">
-            <button type="button" class="btn btn-default">Map Service</button>
-            <button type="button" class="btn btn-default">More Information</button>         
-            <button type="button" class="btn btn-default">Contact Us</button>           
+          <hr>  
+          <div class="text-center">
+            <div class="btn-group-xs">
+              <button type="button" class="btn btn-primary">Instructions</button>
+              <button type="button" class="btn btn-primary">FAQ</button>         
+              <button type="button" class="btn btn-primary">Download Inventory</button>           
+            </div>
+            <div class="btn-group-xs">
+              <button type="button" class="btn btn-primary">Metadata</button>
+              <button type="button" class="btn btn-primary">Map Service</button>
+              <button type="button" class="btn btn-primary">More Information</button> 
+            </div>      
+            <div class="btn-group-xs">              
+              <button type="button" class="btn btn-primary">Contact Us</button>           
+            </div>
           </div>
           <hr>
           <div>
