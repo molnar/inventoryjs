@@ -1,5 +1,6 @@
 /* app css stylesheet */
 
+
 .gridStyle {
     border: 1px solid rgb(212,212,212);
     width: 100%; 
@@ -99,7 +100,7 @@ label{
 }
 #top-content {
     position: absolute;
-    top: 0;
+    top: 45px;
     bottom: 306px; /* 130 + 6 */
     left: 0;
     right: 0;
@@ -140,5 +141,13 @@ label{
 
 
 .locationSlct{
-    width: 100%;
+    width: 80%;
+}
+
+.pushTop{
+    padding-top: 5px;
+}
+
+.contentSection{
+    padding-bottom: 20px;
 }

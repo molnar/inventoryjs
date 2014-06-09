@@ -12,8 +12,7 @@ angular.module('myApp.directives', []).
 
 angular.module('mc.resizer', []).directive('resizer', function($document) {
 
-  return function($scope, $element, $attrs) {
-    console.log($scope.$parent)
+  return function($scope, $element, $attrs) {  
 
       $element.on('mousedown', function(event) {
           event.preventDefault();

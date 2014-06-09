@@ -2,7 +2,7 @@
 <html lang="en" ng-app="myApp">
 <head>
   <meta charset="utf-8">
-  <title>United States Interagency Elevation Inventory  </title>
+  <title>United States Interagency Elevation Inventory</title>
   <link rel="stylesheet" type="text/css" href="http://openlayers.org/dev/theme/default/style.css">
   <link rel="stylesheet" type="text/css" href="http://angular-ui.github.io/ng-grid/css/ng-grid.css">
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -12,76 +12,84 @@
 <body ng-controller="mainCtrl">
     <!-- resizer -->
     <!-- http://embed.plnkr.co/Zi2f0EPxmtEUmdoFR63B/preview --> 
+    <div id="noaa_header" options='{"title":"United States Interagency Elevation Inventory", "showSocial":false}'></div>
+    <div class="container">
+        <div id="top-content">
+            <div class="sidepanel">
+              <div class="contentSection text-center pushTop">
+                <select ng-model="state" ng-options="s.attributes.STATE_NAME for s in myStates" ng-change="stateSlct()" class="locationSlct">
+                <option value="">Select State/Territory</option>   
+              </select>         
+              <select ng-model="county" ng-options="c.attributes.NAME for c in myCounties" ng-change="cntySlct()" class="locationSlct">  
+                <option value="">Select County/Island</option>     
+              </select>
+              </div>
+              
+             <!--  <hr>  --> 
+              <div class="contentSection text-center">
+                <div class="btn-group-xs">
+                  <button type="button" class="btn btn-primary">Instructions</button>
+                  <button type="button" class="btn btn-primary">FAQ</button>         
+                  <button type="button" class="btn btn-primary">Download Inventory</button>           
+                </div>
+                <div class="btn-group-xs">
+                  <button type="button" class="btn btn-primary">Metadata</button>
+                  <button type="button" class="btn btn-primary">Map Service</button>
+                  <button type="button" class="btn btn-primary">More Information</button> 
+                </div>      
+                <div class="btn-group-xs">              
+                  <button type="button" class="btn btn-primary">Contact Us</button>           
+                </div>
+              </div>
+            <!--   <hr> -->
+              <div>
+                <h5>Data Type</h5>
+                <ul>
+                  <li><div class="swatch topolidar"></div><label>Topographic Lidar</label></li>
+                  <li><div class="swatch toposhore"></div><label>Topography Shoreline Lidar</label></li>
+                  <li><div class="swatch ifsar"></div><label>IfSAR Data</label></li>
+                  <li><div class="swatch bathylidar"></div><label>Bathymetric Lidar</label></li>
+                  <li><div class="swatch hydrographic"></div><label>NOAA Hydrographic Surveys</label></li>
+                  <li><div class="swatch otherbathy"></div><label>Other Bathymetric Surveys</label></li>
+                  <li><div class="swatch line usacedredge"></div><label>USACE Dredge Surveys</label></li>
+                  <li><div class="swatch line trackline"></div><label>Trackline Bathymetry</label></li>
+                  <li><div class="swatch line multibeam"></div><label>Multibeam Bathymetry</label></li>
+                </ul>
+                <label>*Data inventory current as of August 2013</label>
+              </div>
 
-    <div id="top-content">
-        <div class="sidepanel">
-          <select ng-model="state" ng-options="s.attributes.STATE_NAME for s in myStates" ng-change="stateSlct()" class="locationSlct">
-            <option value="">Select State/Territory</option>   
-          </select>         
-          <select ng-model="county" ng-options="c.attributes.NAME for c in myCounties" ng-change="cntySlct()" class="locationSlct">  
-            <option value="">Select County/Island</option>     
-          </select>
-          <hr>  
-          <div class="text-center">
-            <div class="btn-group-xs">
-              <button type="button" class="btn btn-primary">Instructions</button>
-              <button type="button" class="btn btn-primary">FAQ</button>         
-              <button type="button" class="btn btn-primary">Download Inventory</button>           
-            </div>
-            <div class="btn-group-xs">
-              <button type="button" class="btn btn-primary">Metadata</button>
-              <button type="button" class="btn btn-primary">Map Service</button>
-              <button type="button" class="btn btn-primary">More Information</button> 
+            </div> 
+            <div  ng-class="{coverdiv: covermap == true}">      
             </div>      
-            <div class="btn-group-xs">              
-              <button type="button" class="btn btn-primary">Contact Us</button>           
+            <div id='map_canvas' class='map'>      
             </div>
-          </div>
-          <hr>
-          <div>
-            <h5>Data Type</h5>
-            <ul>
-              <li><div class="swatch topolidar"></div><label>Topographic Lidar</label></li>
-              <li><div class="swatch toposhore"></div><label>Topography Shoreline Lidar</label></li>
-              <li><div class="swatch ifsar"></div><label>IfSAR Data</label></li>
-              <li><div class="swatch bathylidar"></div><label>Bathymetric Lidar</label></li>
-              <li><div class="swatch hydrographic"></div><label>NOAA Hydrographic Surveys</label></li>
-              <li><div class="swatch otherbathy"></div><label>Other Bathymetric Surveys</label></li>
-              <li><div class="swatch line usacedredge"></div><label>USACE Dredge Surveys</label></li>
-              <li><div class="swatch line trackline"></div><label>Trackline Bathymetry</label></li>
-              <li><div class="swatch line multibeam"></div><label>Multibeam Bathymetry</label></li>
-            </ul>
-          </div>
-
         </div> 
-        <div  ng-class="{coverdiv: covermap == true}">      
-        </div>      
-        <div id='map_canvas' class='map'>      
+
+        <div id="bottom-content">
+            <tabset>
+              <tab heading="Topographic">
+                  <div class="gridStyle" ng-grid="topogridOptions"></div>
+              </tab>
+              <tab heading="Bathymetric" active="activeBathy">
+                  <div class="gridStyle" ng-grid="bathygridOptions"></div>
+              </tab>
+            </tabset> 
+        </div> 
+
+        <div id="content-resizer" 
+             resizer="horizontal" 
+             resizer-height="6" 
+             resizer-top="#top-content" 
+             resizer-bottom="#bottom-content">
         </div>
-    </div> 
 
-    <div id="bottom-content">
-        <tabset>
-          <tab heading="Topographic">
-              <div class="gridStyle" ng-grid="topogridOptions"></div>
-          </tab>
-          <tab heading="Bathymetric" active="activeBathy">
-              <div class="gridStyle" ng-grid="bathygridOptions"></div>
-          </tab>
-        </tabset> 
-    </div> 
-
-    <div id="content-resizer" 
-         resizer="horizontal" 
-         resizer-height="6" 
-         resizer-top="#top-content" 
-         resizer-bottom="#bottom-content">
-    </div> 
+    </div>
+     
 
     
        
  
-
+  <div id="noaa_footer" style="bottom:0;"></div>
  
 
   <!-- In production use:
@@ -99,5 +107,8 @@
   <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
   <script src="lib/ng-grid.js"></script>  
   <script src="lib/pace.min.js"></script>
+
+  <script type="text/javascript" src="http://csc.noaa.gov/js/maptemplate/api/noaa_header.js"></script>
+  <script type="text/javascript" src="http://csc.noaa.gov/js/maptemplate/api/noaa_footer.js"></script>
 </body>
 </html>
